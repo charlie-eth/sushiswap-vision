@@ -112,7 +112,7 @@ const DataText = styled(Flex)`
 `
 
 const SORT_FIELD = {
-  LIQ: 'totalLiquidityUSD',
+  LIQ: 'tvl',
   VOL: 'oneDayVolumeUSD',
   SYMBOL: 'symbol',
   NAME: 'name',
@@ -140,6 +140,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
   }, [tokens])
 
   const formattedTokens = useMemo(() => {
+
     return (
       tokens &&
       Object.keys(tokens)
@@ -198,7 +199,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
             <FormattedName text={item.symbol} maxCharacters={5} />
           </DataText>
         )}
-        <DataText area="liq">{formattedNum(item.totalLiquidityUSD, true)}</DataText>
+        <DataText area="liq">{formattedNum(item.tvl, true)}</DataText>
         <DataText area="vol">{formattedNum(item.oneDayVolumeUSD, true)}</DataText>
         {!below1080 && (
           <DataText area="price" color="text" fontWeight="500">
@@ -248,7 +249,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.LIQ ? true : !sortDirection)
             }}
           >
-            Liquidity {sortedColumn === SORT_FIELD.LIQ ? (!sortDirection ? '↑' : '↓') : ''}
+            TVL {sortedColumn === SORT_FIELD.LIQ ? (!sortDirection ? '↑' : '↓') : ''}
           </ClickableText>
         </Flex>
         <Flex alignItems="center">

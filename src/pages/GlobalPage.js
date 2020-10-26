@@ -48,6 +48,7 @@ function GlobalPage() {
   // get data for lists and totals
   const allPairs = useAllPairData()
   const allTokens = useAllTokenData()
+  //console.log('51', allTokens);
   const transactions = useGlobalTransactions()
   const { totalLiquidityUSD, oneDayVolumeUSD, volumeChangeUSD, liquidityChangeUSD } = useGlobalData()
 
@@ -126,31 +127,14 @@ function GlobalPage() {
           )}
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
-              <TYPE.main fontSize={'1.125rem'}>Top Tokens</TYPE.main>
+              <TYPE.main fontSize={'1.125rem'}>TVL Rankings</TYPE.main>
               <CustomLink to={'/tokens'}>See All</CustomLink>
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
             <TopTokenList tokens={allTokens} />
           </Panel>
-          <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
-            <RowBetween>
-              <TYPE.main fontSize={'1rem'}>Top Pairs</TYPE.main>
-              <CustomLink to={'/pairs'}>See All</CustomLink>
-            </RowBetween>
-          </ListOptions>
-          <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
-            <PairList pairs={allPairs} />
-          </Panel>
 
-          <span>
-            <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
-              Transactions
-            </TYPE.main>
-          </span>
-          <Panel style={{ margin: '1rem 0' }}>
-            <TxnList transactions={transactions} />
-          </Panel>
         </div>
       </ContentWrapper>
     </PageWrapper>

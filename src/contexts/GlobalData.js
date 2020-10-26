@@ -315,6 +315,22 @@ async function getGlobalData(ethPrice, oldEthPrice) {
  * on main page
  * @param {*} oldestDateToFetch // start of window to fetch from
  */
+
+ const fetchMyURL = async () => {
+   return fetch('./test/chart.json')  .then(response => {
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new TypeError("Oops, we haven't got JSON!");
+      }
+      return response.json();
+   })
+   .then(data => {
+     return data;
+   })
+   .catch(error => console.error(error));
+ }
+
+
 const getChartData = async oldestDateToFetch => {
   let data = []
   let weeklyData = []
@@ -376,6 +392,9 @@ const getChartData = async oldestDateToFetch => {
       }
     }
 
+
+    console.log('chart data',data);
+
     // format weekly data for weekly sized chunks
     data = data.sort((a, b) => (parseInt(a.date) > parseInt(b.date) ? 1 : -1))
     let startIndexWeekly = -1
@@ -391,6 +410,12 @@ const getChartData = async oldestDateToFetch => {
       weeklyData[startIndexWeekly].weeklyVolumeUSD =
         (weeklyData[startIndexWeekly].weeklyVolumeUSD ?? 0) + data[i].dailyVolumeUSD
     })
+
+    data = await fetchMyURL()
+
+    console.log('week chart data',data);
+
+
   } catch (e) {
     console.log(e)
   }
