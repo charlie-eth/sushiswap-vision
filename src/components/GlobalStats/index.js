@@ -33,42 +33,6 @@ export default function GlobalStats() {
   const oneDayFees = oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD * 0.003, true) : ''
 
   return (
-    <Header>
-      <RowBetween style={{ padding: below816 ? '0.5rem' : '.5rem' }}>
-        <RowFixed>
-          {!below400 && (
-            <TYPE.main
-              mr={'1rem'}
-              onMouseEnter={() => {
-                setShowPriceCard(true)
-              }}
-              onMouseLeave={() => {
-                setShowPriceCard(false)
-              }}
-              style={{ position: 'relative' }}
-            >
-              ETH Price: <Medium>{formattedEthPrice}</Medium>
-              {showPriceCard && <UniPrice />}
-            </TYPE.main>
-          )}
-
-          {!below1180 && (
-            <TYPE.main mr={'1rem'}>
-              Transactions (24H): <Medium>{localNumber(oneDayTxns)}</Medium>
-            </TYPE.main>
-          )}
-          {!below1024 && (
-            <TYPE.main mr={'1rem'}>
-              Pairs: <Medium>{localNumber(pairCount)}</Medium>
-            </TYPE.main>
-          )}
-          {!below1295 && (
-            <TYPE.main mr={'1rem'}>
-              Fees (24H): <Medium>{oneDayFees}</Medium>&nbsp;
-            </TYPE.main>
-          )}
-        </RowFixed>
-      </RowBetween>
-    </Header>
+    null
   )
 }

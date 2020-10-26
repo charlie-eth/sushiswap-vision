@@ -131,7 +131,7 @@ function SideNav({ history }) {
                     }
                   >
                     <Disc size={20} style={{ marginRight: '.75rem' }} />
-                    Tokens
+                    Protocols
                   </Option>
                 </BasicLink>
 

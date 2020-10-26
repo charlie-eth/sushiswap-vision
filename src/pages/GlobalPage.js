@@ -71,7 +71,7 @@ function GlobalPage() {
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
             <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'Defi Dashboard'}</TYPE.largeHeader>
-            
+
             <GlobalStats />
           </AutoColumn>
           {below800 && ( // mobile card

@@ -264,6 +264,9 @@ async function getGlobalData(ethPrice, oldEthPrice) {
     })
     const twoWeekData = twoWeekResult.data.uniswapFactories[0]
 
+
+    let chartData = await fetchMyURL()
+
     if (data && oneDayData && twoDayData) {
       let [oneDayVolumeUSD, volumeChangeUSD] = get2DayPercentChange(
         data.totalVolumeUSD,
@@ -278,15 +281,18 @@ async function getGlobalData(ethPrice, oldEthPrice) {
       )
 
       // format the total liquidity in USD
-      data.totalLiquidityUSD = data.totalLiquidityETH * ethPrice
+
+      data.totalLiquidityUSD = chartData[chartData.length - 1].dailyVolumeUSD;
       const liquidityChangeUSD = getPercentChange(
         data.totalLiquidityETH * ethPrice,
         oneDayData.totalLiquidityETH * oldEthPrice
       )
 
+      var change = ((chartData[chartData.length - 1].dailyVolumeUSD - chartData[chartData.length - 2].dailyVolumeUSD) / chartData[chartData.length - 2].dailyVolumeUSD) * 100;
+      //
       // add relevant fields with the calculated amounts
-      data.oneDayVolumeUSD = oneDayVolumeUSD
-      data.volumeChangeUSD = volumeChangeUSD
+      data.oneDayVolumeUSD =  chartData[chartData.length - 1].dailyVolumeUSD - chartData[chartData.length - 2].dailyVolumeUSD
+      data.volumeChangeUSD = change
       data.liquidityChangeUSD = liquidityChangeUSD
       data.oneDayTxns = oneDayTxns
       data.txnChange = txnChange

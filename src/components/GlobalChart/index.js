@@ -9,6 +9,7 @@ import { RowFixed } from '../Row'
 import { OptionButton } from '../ButtonStyled'
 import { getTimeframe } from '../../utils'
 import { TYPE } from '../../Theme'
+import { formattedNum, formattedPercent } from '../../utils'
 
 const CHART_VIEW = {
   VOLUME: 'Volume',
@@ -88,7 +89,7 @@ const GlobalChart = ({ display }) => {
             data={dailyData}
             base={totalLiquidityUSD}
             baseChange={liquidityChangeUSD}
-            title="Liquidity"
+            title="Total TVL"
             field="totalLiquidityUSD"
             width={width}
             type={CHART_TYPES.AREA}
@@ -99,9 +100,9 @@ const GlobalChart = ({ display }) => {
         <ResponsiveContainer aspect={60 / 28}>
           <TradingViewChart
             data={chartDataFiltered}
-            base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume : oneDayVolumeUSD}
+            base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume  : oneDayVolumeUSD}
             baseChange={volumeWindow === VOLUME_WINDOW.WEEKLY ? weeklyVolumeChange : volumeChangeUSD}
-            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'Volume (7d)' : 'Volume'}
+            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'Change (7d)' : 'Change'}
             field={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'weeklyVolumeUSD' : 'dailyVolumeUSD'}
             width={width}
             type={CHART_TYPES.BAR}
