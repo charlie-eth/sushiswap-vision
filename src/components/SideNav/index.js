@@ -134,52 +134,14 @@ function SideNav({ history }) {
                     Tokens
                   </Option>
                 </BasicLink>
-                <BasicLink to="/pairs">
-                  <Option
-                    activeText={
-                      (history.location.pathname.split('/')[1] === 'pairs' ||
-                        history.location.pathname.split('/')[1] === 'pair') ??
-                      undefined
-                    }
-                  >
-                    <PieChart size={20} style={{ marginRight: '.75rem' }} />
-                    Pairs
-                  </Option>
-                </BasicLink>
 
-                <BasicLink to="/accounts">
-                  <Option
-                    activeText={
-                      (history.location.pathname.split('/')[1] === 'accounts' ||
-                        history.location.pathname.split('/')[1] === 'account') ??
-                      undefined
-                    }
-                  >
-                    <List size={20} style={{ marginRight: '.75rem' }} />
-                    Accounts
-                  </Option>
-                </BasicLink>
+
               </AutoColumn>
             )}
           </AutoColumn>
           <AutoColumn gap="0.5rem" style={{ marginLeft: '.75rem', marginBottom: '4rem' }}>
             <HeaderText>
-              <Link href="https://sushiswapclassic.org" target="_blank">
-                sushiswapclassic.org
-              </Link>
-            </HeaderText>
-            <HeaderText>
-              <Link href="https://help.sushidocs.com/" target="_blank">
-                Docs
-              </Link>
-            </HeaderText>
-            <HeaderText>
-              <Link href="https://discord.gg/hJ2p555" target="_blank">
-                Discord
-              </Link>
-            </HeaderText>
-            <HeaderText>
-              <Link href="https://twitter.com/SushiSwap" target="_blank">
+              <Link href="https://twitter.com/DefiDash" target="_blank">
                 Twitter
               </Link>
             </HeaderText>
